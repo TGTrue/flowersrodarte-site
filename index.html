@@ -1,145 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raymond Rodarte</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raymond Rodarte</title>
+<style>
+  :root {
+    --ink:   #1a1a1a;
+    --muted: #6b7280;
+    --line:  #e7e5e4;
+    --card:  #ffffff;
+    --bg:    #faf9f7;
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f9f9f7;
-      color: #1a1a1a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1.25rem;
-    }
+  * { box-sizing: border-box; }
 
-    .card {
-      background: #fff;
-      border: 1px solid #e5e5e2;
-      border-radius: 16px;
-      padding: 2rem 1.75rem;
-      width: 100%;
-      max-width: 480px;
-      margin-bottom: 1rem;
-    }
+  body {
+    margin: 0;
+    padding: 48px 20px 64px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    .avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #dbeafe;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 600;
-      color: #1e40af;
-      margin-bottom: 1rem;
-    }
+  .wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-    h1 {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
+  .avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .tagline {
-      font-size: 14px;
-      color: #6b6b6b;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
 
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  .tagline {
+    margin: 0 0 36px;
+    color: var(--muted);
+    font-size: 15px;
+  }
 
-    .link-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid #e5e5e2;
-      background: #fff;
-      text-decoration: none;
-      color: #1a1a1a;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.15s, border-color 0.15s;
-      cursor: pointer;
-    }
+  .section-label {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: left;
+  }
 
-    .link-btn:hover {
-      background: #f4f4f1;
-      border-color: #ccc;
-    }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    .link-btn .icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
 
-    .icon-blue   { background: #dbeafe; }
-    .icon-green  { background: #dcfce7; }
-    .icon-purple { background: #ede9fe; }
-    .icon-orange { background: #fff7ed; }
-    .icon-amber  { background: #f3e4cf; }
-    .icon-slate  { background: #e2e8f0; }
+  .link-btn:hover {
+    border-color: #d6d3d1;
+    transform: translateY(-1px);
+  }
 
-    .link-btn .label { flex: 1; }
-    .link-btn .arrow { color: #aaa; font-size: 13px; }
+  .link-btn:focus-visible {
+    outline: 2px solid #1a1a1a;
+    outline-offset: 2px;
+  }
 
-    .section-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #aaa;
-      margin-bottom: 10px;
-    }
+  .icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border-radius: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    footer {
-      font-size: 12px;
-      color: #bbb;
-      margin-top: 1.5rem;
-    }
-  </style>
+  .icon-blue   { background: #dbeafe; }
+  .icon-green  { background: #dcfce7; }
+  .icon-purple { background: #ede9fe; }
+  .icon-orange { background: #fff7ed; }
+  .icon-amber  { background: #f3e4cf; }
+
+  .label {
+    flex: 1;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .arrow {
+    color: #c4c0bb;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  footer {
+    margin-top: 44px;
+    color: #a8a29e;
+    font-size: 13px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-btn { transition: none; }
+    .link-btn:hover { transform: none; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="card">
+  <div class="wrap">
+
     <div class="avatar">RR</div>
+
     <h1>Raymond Rodarte</h1>
     <p class="tagline">Based in Ventura, CA · Dad · builder of things</p>
 
-    <p class="section-title">Links</p>
+    <p class="section-label">Links</p>
+
     <div class="links">
-
-      <a href="#" class="link-btn">
-        <span class="icon icon-blue">💼</span>
-        <span class="label">Portfolio</span>
-        <span class="arrow">›</span>
-      </a>
-
-      <a href="betting.html" class="link-btn">
-        <span class="icon icon-purple">🎲</span>
-        <span class="label">Family bet pool</span>
-        <span class="arrow">›</span>
-      </a>
 
       <a href="/smoke" class="link-btn">
         <span class="icon icon-amber">🚬</span>
@@ -147,28 +155,23 @@
         <span class="arrow">›</span>
       </a>
 
-      <a href="https://homepage.flowersrodarte.com" target="_blank" class="link-btn">
-        <span class="icon icon-slate">🖥️</span>
+      <a href="https://homepage.flowersrodarte.com" class="link-btn" target="_blank" rel="noopener">
+        <span class="icon icon-blue">🖥️</span>
         <span class="label">Homelab</span>
         <span class="arrow">›</span>
       </a>
 
-      <a href="https://venmo.com/raymondrodarte" target="_blank" class="link-btn">
-        <span class="icon icon-green">💸</span>
-        <span class="label">Send me money on Venmo</span>
-        <span class="arrow">›</span>
-      </a>
-
-      <a href="https://byndwellness.com" target="_blank" class="link-btn">
-        <span class="icon icon-orange">🌿</span>
+      <a href="https://byndwellness.com" class="link-btn" target="_blank" rel="noopener">
+        <span class="icon icon-green">🌿</span>
         <span class="label">BYND Wellness</span>
         <span class="arrow">›</span>
       </a>
 
     </div>
-  </div>
 
-  <footer>flowersrodarte.com</footer>
+    <footer>flowersrodarte.com</footer>
+
+  </div>
 
 </body>
 </html>
